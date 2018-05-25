@@ -1,6 +1,9 @@
 from geopy.geocoders import GeoNames
 import pandas
 
+
+# schoolguns.csv downloaded from http://www.gunviolencearchive.org/query
+
 starterdf = pandas.read_csv("./schoolguns.csv")
 cities = starterdf["City Or County"].tolist()
 states = starterdf["State"].tolist()
@@ -8,7 +11,7 @@ killed = starterdf["# Killed"].tolist()
 injured = starterdf["# Injured"].tolist()
 Latitude = []
 Longitude = []
-geolocator = GeoNames(username='jas741')  # Register at Geonames
+geolocator = GeoNames(username='your_username')  # Register at Geonames.org . then activate free webservices at geonames.org/manageaccount
 for city,state in zip(cities,states):
     location = geolocator.geocode(city +"," + state, timeout=20)
     if location is not None:
