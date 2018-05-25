@@ -1,6 +1,8 @@
 import folium
 import pandas as pd
 
+#this is pretty crude
+
 US_COORDINATES = (48, -102)
 
 crimedata = pd.read_csv('schoolgunslonglat.csv')
@@ -10,9 +12,9 @@ killed = crimedata["Killed"].tolist()
 injured = crimedata["Injured"].tolist()
 victims = [x+y for x,y in zip(killed,injured)]
 
-# create empty map zoomed in on San Francisco
+# create empty map centered on somewhere in the middle of the US
 
-mymap = folium.Map(location=US_COORDINATES, zoom_start=6)
+mymap = folium.Map(location=US_COORDINATES, zoom_start=4)
 
 # add a marker for every record in the filtered data, use a clustered view
 
